@@ -4,7 +4,7 @@
 /usr/local/bin/dialog \
 --title "Restart Required" \
 --titlefont size=22 \
---message "**Your Company IT** \n\nYour computer requires a restart. \n\nPlease save your work and restart as soon as you are able." \
+--message "**Your Company IT** \n\nYour computer requires a restart. \n\nPlease save your work and restart as soon as possible." \
 --button1text "Restart Now" \
 --width 300 --height 400 \
 --messagefont size=16 \
