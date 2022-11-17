@@ -14,3 +14,6 @@ An example of how to set a bothersome persistent Dialog window with a simple def
 
 ## captureButtonOutput.sh
 An example of how to capture the user input (and exit code) of a Dialog window and then perform different tasks based on the results.
+
+## promptForRestart.sh
+An example of a script that prompts the user to restart
