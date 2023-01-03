@@ -17,3 +17,6 @@ An example of how to capture the user input (and exit code) of a Dialog window a
 
 ## promptForRestart.sh
 An example of a script that prompts the user to restart
+
+## arraysNoEval.sh
+An example of how to use bash/zsh arrays to pass arguments that contain your SwiftDialog options. There is probably no need to use `eval`. You can read more here: https://bigmacadmin.wordpress.com/2023/01/03/avoiding-eval-with-swiftdialog/
