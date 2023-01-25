@@ -20,3 +20,6 @@ An example of a script that prompts the user to restart
 
 ## arraysNoEval.sh
 An example of how to use bash/zsh arrays to pass arguments that contain your SwiftDialog options. There is probably no need to use `eval`. You can read more here: https://bigmacadmin.wordpress.com/2023/01/03/avoiding-eval-with-swiftdialog/
+
+## progressExample.sh
+An zsh example of how to get the length of an array and iterate through each item using a command file to control a progress bar.
