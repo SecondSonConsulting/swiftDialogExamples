@@ -52,7 +52,8 @@ pBuddy="/usr/libexec/PlistBuddy"
 # How long until a deferral expires? Value in seconds. Set this low for testing.
 deferralDuration="10"
 
-# How many deferrals until you no longer offer them?
+# How many deferrals until you no longer offer them? In this example, the DeferralCount value is reset
+# when the "do_the_things" action completes successfully.
 deferralMaximum="3"
 
 # Deadline Date. This is a unix epoch time value. 
@@ -64,15 +65,10 @@ deadlineDate=""
 
 # Full file path to your configuration profile.
 # For this example, we'll just stay in the current working directory.
+# 
 # You will want to consider "Is this a root daemon or a user agent?" as well as
 # whether you want separate deferral files for multiple users or one file
 # for the system.
-# 
-# The admin will also want to consider "When should the deferral plist be deleted
-# or reset?" This example script does not provide this logic. Depending on your use case,
-# it could be completed during the "check_the_things" function (if the device doesn't meet
-# the criteria for action) or it could be done in the "do_the_things" function (delete the plist
-# upon successful completion of the desired action.)
 deferralPlist="com.bigmacadmin.deferralexample.plist"
 
 #################################
