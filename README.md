@@ -25,4 +25,4 @@ An example of how to use bash/zsh arrays to pass arguments that contain your Swi
 An zsh example of how to get the length of an array and iterate through each item using a command file to control a progress bar.
 
 ## deferralsExample.sh
-An example script for doing something with user deferrals. This is a fully functional Template script with extensive comments documenting the behavior.
+An example script for doing something with user deferrals. This is a fully functional template script with extensive comments documenting the behavior. You can read more here: https://bigmacadmin.wordpress.com/2023/02/20/scripting-user-deferrals-with-swiftdialog/
