@@ -1,4 +1,7 @@
 # swiftDialogExamples
+
+This repository contains example scripts to show off the various features of [SwiftDialog](https://github.com/bartreardon/swiftDialog)
+
 ## checklistJSONexample.sh
 An example of how to generate checklists using JSON data and parse the output all in shell.
 
