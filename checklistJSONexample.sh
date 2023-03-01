@@ -1,5 +1,5 @@
 #!/bin/zsh
-#set -x
+set -x
 
 ##Written by Trevor Sysock
 ##aka @BigMacAdmin on Slack
@@ -25,6 +25,11 @@ dialogPath=/usr/local/bin/dialog
 #Create a tmp file to hold our dialog options
 tmpDialogFile1=$(mktemp /tmp/tmpDialogFile1.XXXXXX)
 tmpDialogFile2=$(mktemp /tmp/tmpDialogFile2.XXXXXX)
+
+#Set permissions on temp files. 
+#This is necessary if the script is running as root, since dialog always runs "asuser" if using /usr/local/bin/dialog
+chmod 644 "$tmpDialogFile1"
+chmod 644 "$tmpDialogFile2"
 
 #Function to delete our tmp files and exit with a given exit code
 cleanup_and_exit ()
