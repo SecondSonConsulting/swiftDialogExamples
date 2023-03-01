@@ -9,6 +9,9 @@
 ##This script is meant as an example of how to use <<< Here Doc 
 ##shell feature to create JSON files that contain Dialog options
 
+##This script requires SwiftDialog v2.1 or newer, due to changes made related to this issue:
+# https://github.com/bartreardon/swiftDialog/issues/207
+
 ##It also contains an example of how to process output and take action
 ##based on the users selections without python
 
@@ -73,7 +76,6 @@ if [ "$dialogExit" != 0 ]; then
 	cleanup_and_exit "$dialogExit"
 fi
 
-
 #Filter output response options that were not selected. This isn't strictly necessary in this example script.
 dialogResponse1=$(echo "$dialogResponseFull1" | grep -v ": false")
 
@@ -82,16 +84,16 @@ dialogResponse1=$(echo "$dialogResponseFull1" | grep -v ": false")
 #You can use || instead to "process the next command only if the previous command exited 1
 #You can combine both into an if/then statement (Shown here for Option D)
 
-echo "$dialogResponse1" | grep -q "Option A : true" && { echo "User chose Option A." ; optionA="Y" ; }
-echo "$dialogResponse1" | grep -q "Option B : true" && { echo "User chose Option B." ; optionB="Y" ; }
-echo "$dialogResponse1" | grep -q "Option C : true" && { echo "User chose Option C." ; optionC="Y" ; }
-echo "$dialogResponse1" | grep -q "Option D : true" && { echo "User chose Option D." ; optionD="Y" ; } || echo "User did not choose Option D."
+echo "$dialogResponse1" | grep -q '"Option A" : "true"' && { echo "User chose Option A." ; optionA="Y" ; }
+echo "$dialogResponse1" | grep -q '"Option B" : "true"' && { echo "User chose Option B." ; optionB="Y" ; }
+echo "$dialogResponse1" | grep -q '"Option C" : "true"' && { echo "User chose Option C." ; optionC="Y" ; }
+echo "$dialogResponse1" | grep -q '"Option D" : "true"' && { echo "User chose Option D." ; optionD="Y" ; } || echo "User did not choose Option D."
 
 #If you don't want to echo the result to standard out, you can drop the brackets and semi-colons like this instead:
-#echo "$dialogResponse1" | grep -q "Option A : true" && optionA="Y"
-#echo "$dialogResponse1" | grep -q "Option B : true" && optionB="Y"
-#echo "$dialogResponse1" | grep -q "Option C : true" && optionC="Y"
-#echo "$dialogResponse1" | grep -q "Option D : true" && optionD="Y"
+#echo "$dialogResponse1" | grep -q '"Option A" : "true"' && optionA="Y"
+#echo "$dialogResponse1" | grep -q '"Option B" : "true"' && optionB="Y"
+#echo "$dialogResponse1" | grep -q '"Option C" : "true"' && optionC="Y"
+#echo "$dialogResponse1" | grep -q '"Option D" : "true"' && optionD="Y"
 
 #Sometimes you just want to take a nap
 sleep .5
@@ -113,8 +115,8 @@ if [ "$optionD" = "Y" ]; then
 	#Filter output response options that were not selected. This isn't strictly necessary in this example script.
 	dialogResponse2=$(echo "$dialogResponseFull2" | grep -v ": false")
 	#This processes the response to the second dialog.
-	echo "$dialogResponse2" | grep -q "Option 1 : true" && { echo "User chose Option 1." ; option1="Y" ; }
-	echo "$dialogResponse2" | grep -q "Option 2 : true" && { echo "User chose Option 2." ; option2="Y" ; }
+	echo "$dialogResponse2" | grep -q '"Option 1" : "true"' && { echo "User chose Option 1." ; option1="Y" ; }
+	echo "$dialogResponse2" | grep -q '"Option 2" : "true"' && { echo "User chose Option 2." ; option2="Y" ; }
 fi
 
 #Exit the script, deleting any tmp files.
