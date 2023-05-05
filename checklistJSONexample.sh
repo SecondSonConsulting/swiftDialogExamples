@@ -4,7 +4,7 @@
 ##Written by Trevor Sysock
 ##aka @BigMacAdmin on Slack
 
-##version 1.1
+##version 1.2
 
 ##This script is meant as an example of how to use <<< Here Doc 
 ##shell feature to create JSON files that contain Dialog options
@@ -24,7 +24,6 @@ tmpDialogFile1=$(mktemp /tmp/tmpDialogFile1.XXXXXX)
 #Set permissions on temp files. 
 #This is necessary if the script is running as root, since dialog always runs "asuser" if using /usr/local/bin/dialog
 chmod 644 "$tmpDialogFile1"
-chmod 644 "$tmpDialogFile2"
 
 #Function to delete our tmp files and exit with a given exit code
 cleanup_and_exit ()
