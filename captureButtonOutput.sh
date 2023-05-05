@@ -11,11 +11,7 @@
 --button1text "Primary button exits 0" \
 --button2text "Cancel button exits 2" \
 --infobuttontext "Info button exits 3" \
---quitkey k \
-#The --quitkey flag maps a custom key to exit the Dialog window. 
-#Without this, CMD+Q exits with code 0, which can be confused with a button 1 click.
-#With a quit key, CMD+k in this example, the exit code will be 10
-#This may be fixed in future versions of swiftDialog https://github.com/bartreardon/swiftDialog/issues/180
+--timer 10 \
 
 #Very important that this part comes immediately after the dialog command
 dialogResults=$?
@@ -28,6 +24,8 @@ elif [ "$dialogResults" = 2 ]; then
     echo "Do the things you want when button2 is clicked"
 elif [ "$dialogResults" = 3 ]; then
     echo "Do the things you want when button3 (info button) is clicked"
+elif [ "$dialogResults" = 4 ]; then
+    echo "Do the things you want when a timer runs out"
 elif [ "$dialogResults" = 10 ]; then
     echo "Do the things you want when the user used the quitkey combination"
 else
