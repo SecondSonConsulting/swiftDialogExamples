@@ -11,6 +11,7 @@
 
 # Get the currently logged in user
 currentUser=$( echo "show State:/Users/ConsoleUser" | scutil | awk '/Name :/ { print $3 }' )
+uid=$(id -u "$currentUser")
 
 # Run a command as the currently logged in user
 RunAsUser() {  
