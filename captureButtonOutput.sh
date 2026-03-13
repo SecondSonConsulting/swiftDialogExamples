@@ -1,37 +1,51 @@
-#!/bin/zsh
+#!/bin/zsh --no-rcs
+#set -x
 
 #Written by Trevor Sysock (@BigMacAdmin on Slack)
 
 #Example script: How to capture button output and make actions based on the results
 
 /usr/local/bin/dialog \
---title "Example Script" \
---message "This is an exmaple of how to capture the exit code of a script, and then take action based on what button the user clicked." \
---icon "SF=bolt.circle color1=pink color2=blue" \
---button1text "Primary button exits 0" \
---button2text "Cancel button exits 2" \
---infobuttontext "Info button exits 3" \
---timer 10 \
+    --title "Example Button Click" \
+    --message "This script will capture the exit code of the Dialog process, which indicates what action the user took.\n\n Dialog disables button 1 for 3 seconds by default when using a timer." \
+    --icon "SF=bolt.circle color1=pink color2=blue" \
+    --timer 15 \
+    --button1text "Button1" \
+    --button2text "Button2" \
+    --infobutton "Button3(Info)" \
 
-#Very important that this part comes immediately after the dialog command
-dialogResults=$?
+# Capture the exit code of the previous command in a variable
+# Very important that this part comes immediately after the dialog command
+dialogExitCode=$?
 
-echo "Dialog exited with the following code: $dialogResults"
+# Print the exit code to standard out:
+echo "Dialog exit code is: $dialogExitCode"
 
-if [ "$dialogResults" = 0 ]; then
-    echo "Do the things you want when button1 is clicked"
-elif [ "$dialogResults" = 2 ]; then
-    echo "Do the things you want when button2 is clicked"
-elif [ "$dialogResults" = 3 ]; then
-    echo "Do the things you want when button3 (info button) is clicked"
-elif [ "$dialogResults" = 4 ]; then
-    echo "Do the things you want when a timer runs out"
-elif [ "$dialogResults" = 10 ]; then
-    echo "Do the things you want when the user used the quitkey combination"
-else
-    echo "Dialog exited with an unexpected code."
-    echo "Could be an error in the dialog command"
-    echo "Could be the process killed somehow."
-    echo "Exit with an error code."
-    exit "$dialogResults"
-fi
+# Case statement to determine actions based on the exit code. This could also be an if/elif/else block, but case is more readable.
+case $dialogExitCode in
+    0)
+        echo "User selected button 1"
+        # Do button 1 things here
+        ;;
+    2)
+        echo "User selected button 2"
+        # Do button 2 things here
+        ;;
+    3)
+        echo "User selected button 3"
+        # Do button 3 things here
+        ;;
+    4)
+        echo "User allowed the timer to expire"
+        # Do timer expiration things here
+        ;;
+    10)
+        echo "User used the quit key or otherwise closed the window"
+        # Do quit key things here
+        ;;
+    *)
+        echo "Undefined exit code. Process quit unexpectedly or something else weird happened"
+        # Do error things here
+        ;;
+esac
+
